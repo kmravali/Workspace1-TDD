@@ -1,53 +1,33 @@
 package com.tdd.example.decimaltoroman;
 
-import static org.junit.Assert.*;
+public class DecimalToRoman {
 
-import org.junit.Before;
-import org.junit.Test;
+	public Object getRomanNumber(int decimal) {
+		String result = "";
+		
+		if (decimal == 10){
+			return "X";
+		}
+				
+		if (decimal == 9)
+			return "IX";
 
-public class DecimalToRomanTest {
-	
-	private DecimalToRoman decimaltoroman = null;
+		if (decimal <= 8 && decimal>4) {
+			result="V";
+			decimal=decimal-5;
+		}
+		if (decimal == 5)
+			return "V";
 
-	@Before
-	public void setUp() throws Exception {
-		decimaltoroman= new DecimalToRoman();
-	}
+		if (decimal == 4)
+			return "IV";
 
-	@Test
-	public void NullObjectTest() {
-		assertNotNull(decimaltoroman);
-	}
-
-	@Test
-	public void Decimal3(){
-		assertEquals("III", decimaltoroman.getRomanNumber(3));
-	}
-	
-	@Test
-	public void Decimal5(){
-		assertEquals("V", decimaltoroman.getRomanNumber(5));
+		while (decimal >=1) {
+			result += "I";
+			decimal--;
+		}
+		
+		return result;
 	}
 
-	@Test
-	public void Decimal4(){
-		assertEquals("IV", decimaltoroman.getRomanNumber(4));
-	}
-	
-	@Test
-	public void Decimal6(){
-		assertEquals("VI", decimaltoroman.getRomanNumber(6));
-	}
-	
-	@Test
-	public void Decimal9(){
-		assertEquals("IX", decimaltoroman.getRomanNumber(9));
-	}
-	
-	@Test
-	public void Decimal10(){
-		assertEquals("X", decimaltoroman.getRomanNumber(10));
-	}
-	
-	
 }
